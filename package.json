@@ -2,12 +2,12 @@
   "name": "@zephyrec/rest-hal-sequelize",
   "version": "1.0.0",
   "description": "REST HAL API built on top of Sequelize models using Express.js",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
   "scripts": {
     "prepublish": "tsc",
     "pretest": "tsc",
-    "test": "nyc ava",
+    "test": "nyc ava dist/test",
     "typedoc": "typedoc --out doc src"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "@types/express": "^4.0.35",
     "@types/sequelize": "^4.0.50",
     "@types/supertest": "^2.0.0",
-    "@zephyrec/rest-hal-test-tools": "^1.1.1",
+    "@zephyrec/rest-hal-test-tools": "^1.1.2",
     "ava": "^0.19.1",
     "coveralls": "^2.13.0",
     "nyc": "^10.2.0",
