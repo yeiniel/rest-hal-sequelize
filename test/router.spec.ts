@@ -48,8 +48,28 @@ function optionsAllowGet(t) {
 function getHalJsonImplemented(t) {
   return t.context.agent.get(t.context.resource)
     .set("Accept", "application/hal+json")
+    .expect("Content-Type", /hal/)
+    .expect((res) => {
+      t.true(res.status >= 200 && res.status < 400);
+    });
+}
+
+/** Test if resource GET method HAL+JSON representation implement the self link relation.
+ *
+ * It requires the agent attribute of the Ava execution context to be an
+ * instance of supertest. The target resource must be passed as the resource
+ * attribute of the Ava execution context.
+ *
+ * @param t Ava execution object.
+ */
+function getHalJsonImplementSelfLinkRelation(t) {
+  return t.context.agent.get(t.context.resource)
+    .set("Accept", "application/hal+json")
     // .expect(200)
     .expect("Content-Type", /hal/)
+    .expect((res) => {
+      t.truthy(res.body._links.self.href);
+    })
     .expect((res) => {
       t.true(res.status >= 200 && res.status < 400);
     });
@@ -60,3 +80,5 @@ ava(optionsAllowGet);
 ava(restHalTestTools.resourceImplementGetMethod);
 
 ava(getHalJsonImplemented);
+
+ava(getHalJsonImplementSelfLinkRelation);
