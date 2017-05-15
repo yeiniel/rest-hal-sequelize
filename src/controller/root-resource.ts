@@ -1,15 +1,16 @@
+
 import * as express from "express";
 
-import jsonStream = require("JSONStream");
+const jsonStream = require("JSONStream");
 
-import * as transform from "../transform";
 import * as controller from "./controller";
+import * as transform from "../transform";
 
 export class RootResourceController implements controller.IController {
 
   constructor(protected models: string[]) {}
 
-  public setUpRoute(route) {
+  public setUpRoute(route: express.IRoute) {
 
     route.get(this.get.bind(this));
 
@@ -28,7 +29,7 @@ export class RootResourceController implements controller.IController {
       return next(error);
     }
 
-    let outStream;
+    let outStream: transform.HALLinkProvider;
     const inStream = new transform.HALLinkProvider({
       operator: () => req.originalUrl,
       relation: "self",

@@ -1,4 +1,12 @@
+
 import * as stream from "stream";
+
+export interface IHALLinkProviderOptions extends stream.TransformOptions {
+
+  relation: string;
+
+  operator: (object: any) => string;
+}
 
 /** Provide HAL relation link.
  *
@@ -15,7 +23,7 @@ export class HALLinkProvider extends stream.Transform {
    * @params options.relation Relation target for link.
    * @params options.operator Produce the href value of the link
    */
-  constructor(options) {
+  constructor(options: IHALLinkProviderOptions) {
     // force object mode
     options.objectMode = true;
 
@@ -26,7 +34,7 @@ export class HALLinkProvider extends stream.Transform {
     this.operator = options.operator;
   }
 
-  public _transform(object, _, done) {
+  public _transform(object: any, _: string, done: Function) {
     // create the _links object if not present
     object._links = object._links || {};
 

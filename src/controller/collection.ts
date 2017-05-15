@@ -25,7 +25,7 @@ export class CollectionController implements controller.IController {
    *
    * @see controller.Controller.setUpRoute
    */
-  public setUpRoute(route) {
+  public setUpRoute(route: express.IRoute) {
 
     if (this.methods.indexOf("get") !== -1) {
       route.get(this.get.bind(this));
@@ -81,7 +81,7 @@ export class CollectionController implements controller.IController {
       {}, {offset: start, limit: items}, {where: req.params});
 
     let instanceStream = (this.model as any).findAllStream(options)
-      .pipe(new transform.InstanceToJson())
+      .pipe(new transform.InstanceToJSON())
       .pipe(new transform.HALLinkProvider({
         operator: (instance) => `/${this.name}s/${instance.id}`,
         relation: "self",

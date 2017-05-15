@@ -25,7 +25,7 @@ export class ResourceController implements controller.IController {
    *
    * @see controller.Controller.setUpRoute
    */
-  public setUpRoute(route) {
+  public setUpRoute(route: express.IRoute) {
 
     if (this.methods.indexOf("get") !== -1) {
       route.get(this.get.bind(this));
@@ -47,7 +47,7 @@ export class ResourceController implements controller.IController {
    * @see controller.Controller.params
    */
   public get params() {
-    const params = {};
+    const params: { [name: string]: express.RequestParamHandler } = {};
 
     params[this.name] = this.item.bind(this);
 
@@ -96,8 +96,8 @@ export class ResourceController implements controller.IController {
       return next(error);
     }
 
-    let outStream;
-    const inStream = new transform.InstanceToJson();
+    let outStream: transform.HALLinkProvider;
+    const inStream = new transform.InstanceToJSON();
 
     outStream = inStream
       .pipe(new transform.HALLinkProvider({
@@ -143,7 +143,7 @@ export class ResourceController implements controller.IController {
       return next(error);
     }
 
-    const values = {};
+    const values: { [name: string]: string } = {};
     let error = null;
 
     for (let i = 0; i < (req.body as patch.IPatch[]).length; i++) {
