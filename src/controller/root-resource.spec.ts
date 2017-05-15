@@ -22,4 +22,3 @@ ava.beforeEach((t) => {
 ava(restHalTestTools.resourceImplementOPTIONSMethod);
 ava(restHalTestTools.resourceOPTIONSMethodAllowGET);
 ava(restHalTestTools.resourceImplementGETMethod);
-

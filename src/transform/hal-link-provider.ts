@@ -34,7 +34,7 @@ export class HALLinkProvider extends stream.Transform {
     this.operator = options.operator;
   }
 
-  public _transform(object: any, _: string, done: Function) {
+  public _transform(object: any, _: string, done: (error?: Error, result?: any) => void) {
     // create the _links object if not present
     object._links = object._links || {};
 

@@ -32,7 +32,7 @@ export function Router(sequelize: sequelize.Sequelize,
   Object.keys(sequelize.models).forEach((name) => {
 
     // prepare router rule for this model
-    const rule = Object.assign({}, DEFAULT_RULE, rules["default"] || {},
+    const rule = Object.assign({}, DEFAULT_RULE, rules.default || {},
       rules[name] || {});
 
     // route requests for model resources

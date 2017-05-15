@@ -1,10 +1,10 @@
 
 import * as express from "express";
 
-const jsonStream = require("JSONStream");
+import jsonStream = require("JSONStream");
 
-import * as controller from "./controller";
 import * as transform from "../transform";
+import * as controller from "./controller";
 
 export class RootResourceController implements controller.IController {
 
