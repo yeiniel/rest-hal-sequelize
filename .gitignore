@@ -7,8 +7,8 @@
 /.vscode/
 
 # Ignore build products
-/src/*.js
-/src/*.d.ts
+/src/**/*.js
+/src/**/*.d.ts
 
 # Ignore coverage report files
 /.nyc_output/

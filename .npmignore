@@ -18,7 +18,8 @@
 /.vscode/
 
 # Ignore project tests
-/src/*.spec.js
+/src/**/*.spec.js
+/src/**/*.spec.d.ts
 
 # Ignore coverage report files
 /.nyc_output/
