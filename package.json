@@ -1,6 +1,6 @@
 {
   "name": "@zephyrec/rest-hal-sequelize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "REST HAL API built on top of Sequelize models using Express.js",
   "main": "src/index.js",
   "typings": "src/index.d.ts",
