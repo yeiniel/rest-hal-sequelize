@@ -4,6 +4,7 @@ import * as sequelize from "sequelize";
 
 import jsonStream = require("JSONStream");
 
+import * as findAllStream from "../find-all-stream";
 import * as routerRule from "../router-rule";
 import * as transform from "../transform";
 import * as utils from "../utils";
@@ -19,6 +20,10 @@ export class CollectionController implements controller.IController {
   constructor(private model: sequelize.Model<any, any>, private methods: routerRule.Method[]) {
 
     this.name = (this.model as any).name;
+
+    if (!(this.model as any).findAllStream) {
+      findAllStream.FindAllStream(this.model);
+    }
   }
 
   /** Set up an Express route
