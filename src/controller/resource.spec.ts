@@ -29,11 +29,6 @@ ava.beforeEach((t) => {
 
   _setUpRouterParams(app, controller.params);
 
-  app.use((err, req, res, next) => {
-    console.trace(err);
-    next(err);
-  });
-
   t.context.agent = superTest(app);
   t.context.resource = "/1";
 
