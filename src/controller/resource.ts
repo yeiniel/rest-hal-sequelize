@@ -135,27 +135,27 @@ export class ResourceController implements controller.IController {
     // perform basic content negotiation check to avoid invoke de backend
     // unnecessary
     if (!req.is("application/json-patch+json")) {
-      const error = new Error("Unsupported Media Type");
+      const err = new Error("Unsupported Media Type");
 
       // set status attribute for status aware error handling middleware
-      (error as any).status = 415;
+      (err as any).status = 415;
 
-      return next(error);
+      return next(err);
     }
 
     const values: { [name: string]: string } = {};
     let error = null;
 
     for (let i = 0; i < (req.body as patch.IPatch[]).length; i++) {
-      const patch = (req.body as patch.IPatch[])[i];
-      const attr = patch.path.split("/").pop();
-      switch (patch.op) {
+      const patchItem = (req.body as patch.IPatch[])[i];
+      const attr = patchItem.path.split("/").pop();
+      switch (patchItem.op) {
         case "replace":
-          values[attr] = patch.value;
+          values[attr] = patchItem.value;
           break;
         default:
           error = new Error(`Operation with index ${i} and name \
-                                 ${patch.op} not supported`);
+                                 ${patchItem.op} not supported`);
           break;
       }
       if (error) {

@@ -5,7 +5,7 @@ import * as halLinkProvider from "./hal-link-provider";
 
 test((t) => {
   const transform = new halLinkProvider.HALLinkProvider({
-    operator: (obj: any) => "/test",
+    operator: (object: any) => "/test",
     relation: "test",
   });
 

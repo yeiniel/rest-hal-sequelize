@@ -15,21 +15,21 @@ function _setUpRouterParams(router: express.Router,
 
 /** Web request router providing request handling for REST API.
  *
- * @param sequelize Sequelize ORM instance
+ * @param sequelizeInstance Sequelize ORM instance
  * @param rules Routing rules for each model
  * @returns {express.Router} REST API router
  * @constructor
  */
-export function Router(sequelize: sequelize.Sequelize,
+export function Router(sequelizeInstance: sequelize.Sequelize,
                        rules: { [key: string]: routerRule.IRouterRule }): express.IRouter<any> {
   const router = express.Router();
 
   // route requests for the root resource
-  (new controller.RootResourceController(Object.keys(sequelize.models)))
+  (new controller.RootResourceController(Object.keys(sequelizeInstance.models)))
     .setUpRoute(router.route(`/`));
 
   // set up routing for all routes
-  Object.keys(sequelize.models).forEach((name) => {
+  Object.keys(sequelizeInstance.models).forEach((name) => {
 
     // prepare router rule for this model
     const rule = Object.assign({}, DEFAULT_RULE, rules.default || {},
@@ -38,17 +38,17 @@ export function Router(sequelize: sequelize.Sequelize,
     // route requests for model resources
     _setUpRouterParams(
       router,
-      (new controller.ResourceController(sequelize.models[name], rule.enabled))
+      (new controller.ResourceController(sequelizeInstance.models[name], rule.enabled))
         .setUpRoute(router.route(`/${name}s/:${name}`)).params,
     );
 
     // route requests for model collection
-    (new controller.CollectionController(sequelize.models[name], rule.enabled))
+    (new controller.CollectionController(sequelizeInstance.models[name], rule.enabled))
       .setUpRoute(router.route(`/${name}s`));
 
     // route requests for model relations
-    Object.keys((sequelize.models[name] as any).associations).forEach((key) => {
-      const association = (sequelize.models[name] as any).associations[key];
+    Object.keys((sequelizeInstance.models[name] as any).associations).forEach((key) => {
+      const association = (sequelizeInstance.models[name] as any).associations[key];
 
       if (association.associationType === "HasMany") {
         // route requests for associated model collection
