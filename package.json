@@ -7,7 +7,7 @@
   "scripts": {
     "prepublish": "tsc",
     "pretest": "tsc",
-    "test": "nyc ava src/**/*.spec.js",
+    "test": "nyc ava src/*.spec.js src/**/*.spec.js",
     "tslint": "tslint -c tslint.json -e 'src/**/*.d.ts' 'src/**/*.ts'",
     "typedoc": "typedoc --exclude **/*.spec.ts --out docs src"
   },
