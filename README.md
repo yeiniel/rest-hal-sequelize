@@ -6,6 +6,13 @@ This project provide a mapping from [Sequelize][sequelize] models into
 a [REST][rest] API that use the
 [JSON Hypertext Application Language][hal] Media Type.
 
+## Installation
+`rest-hal-sequelize` runs on Node.js and is available as an NPM
+package. You can install `rest-hal-sequelize` in your project's
+directory as usual:
+
+    npm install @zephyrec/rest-hal-sequelize --save
+
 ## Reference Documentation
 Reference documentation for this project can be generated from the
 inline comments on source code using the [Typedoc][typedoc]
