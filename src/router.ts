@@ -53,7 +53,7 @@ export function Router(sequelizeInstance: sequelize.Sequelize,
       if (association.associationType === "HasMany") {
         // route requests for associated model collection
         (new controller.CollectionController(association.target, rule.enabled))
-          .setUpRoute(router.route(`/${name}s/:${name}/${key}`));
+          .setUpRoute(router.route(`/${name}s/:${association.options.foreignKey}/${key}`));
       }
     });
   });
