@@ -143,6 +143,11 @@ export class ResourceController implements controller.IController {
       return next(err);
     }
 
+    // check request is array
+    if (!Array.isArray(req.body)) {
+      return next(new Error("Request body need to be an array of operations"));
+    }
+
     const values: { [name: string]: string } = {};
     let error = null;
 
