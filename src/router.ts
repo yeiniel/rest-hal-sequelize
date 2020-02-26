@@ -21,7 +21,7 @@ function _setUpRouterParams(router: express.Router,
  * @constructor
  */
 export function Router(sequelizeInstance: sequelize.Sequelize,
-                       rules: { [key: string]: routerRule.IRouterRule }): express.IRouter<any> {
+                       rules: { [key: string]: routerRule.IRouterRule }): express.IRouter {
   const router = express.Router();
 
   // route requests for the root resource
