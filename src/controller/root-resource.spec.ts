@@ -1,5 +1,5 @@
 
-import * as restHalTestTools from "@zephyrec/rest-hal-test-tools";
+import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import ava from "ava";
 import * as express from "express";

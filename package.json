@@ -32,6 +32,7 @@
     "@types/node": "^8.10.59",
     "@types/sequelize": "^4.0.53",
     "@types/supertest": "^2.0.0",
+    "@yeiniel/rest-hal-test-tools": "^3.0.0",
     "@zephyrec/rest-hal-test-tools": "^2.1.1",
     "ava": "^0.19.1",
     "coveralls": "^2.13.1",
