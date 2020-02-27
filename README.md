@@ -7,9 +7,13 @@ a [REST][rest] API that use the
 [JSON Hypertext Application Language][hal] Media Type.
 
 ## Installation
-`rest-hal-sequelize` runs on Node.js and is available as an NPM
-package. You can install `rest-hal-sequelize` in your project's
-directory as usual:
+`rest-hal-sequelize` runs on supported versions of Node.js and is available as 
+an NPM package. 
+
+    Previously this package supported Node.js from version 6 onwards. That is
+    not the case anymore.
+
+You can install `rest-hal-sequelize` in your project's directory as usual:
 
     npm install @yeiniel/rest-hal-sequelize --save
 
