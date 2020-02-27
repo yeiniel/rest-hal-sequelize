@@ -11,7 +11,7 @@ a [REST][rest] API that use the
 package. You can install `rest-hal-sequelize` in your project's
 directory as usual:
 
-    npm install @zephyrec/rest-hal-sequelize --save
+    npm install @yeiniel/rest-hal-sequelize --save
 
 ## Reference Documentation
 Reference documentation for this project can be generated from the
