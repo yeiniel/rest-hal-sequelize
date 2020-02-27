@@ -1,6 +1,6 @@
 # REST HAL Sequelize
-[![Build Status](https://travis-ci.org/zephyrec/rest-hal-sequelize.svg?branch=master)](https://travis-ci.org/zephyrec/rest-hal-sequelize)
-[![Coverage Status](https://coveralls.io/repos/github/zephyrec/rest-hal-sequelize/badge.svg?branch=master)](https://coveralls.io/github/zephyrec/rest-hal-sequelize?branch=master)
+[![Build Status](https://travis-ci.org/yeiniel/rest-hal-sequelize.svg?branch=master)](https://travis-ci.org/yeiniel/rest-hal-sequelize)
+[![Coverage Status](https://coveralls.io/repos/github/yeiniel/rest-hal-sequelize/badge.svg?branch=master)](https://coveralls.io/github/yeiniel/rest-hal-sequelize?branch=master)
 
 This project provide a mapping from [Sequelize][sequelize] models into
 a [REST][rest] API that use the
