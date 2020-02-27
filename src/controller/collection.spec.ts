@@ -1,5 +1,5 @@
 
-import ava from "ava";
+import anyTest, { TestInterface } from "ava";
 import * as express from "express";
 import * as Sequelize from "sequelize";
 import * as superTest from "supertest";
@@ -8,7 +8,9 @@ import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import * as collectionController from "./collection";
 
-ava.beforeEach((t) => {
+const test = anyTest as TestInterface<restHalTestTools.IContext>;
+
+test.beforeEach((t) => {
   const app = express();
 
   const sequelize = new Sequelize("sqlite:///tmp/test.db");
@@ -28,7 +30,7 @@ ava.beforeEach((t) => {
   return sequelize.sync();
 });
 
-ava(restHalTestTools.implement, "options");
-ava(restHalTestTools.optionsAllow, "get");
-ava(restHalTestTools.implement, "get");
-ava(restHalTestTools.implementSDCN, "get");
+test(restHalTestTools.implement, "options");
+test(restHalTestTools.optionsAllow, "get");
+test(restHalTestTools.implement, "get");
+test(restHalTestTools.implementSDCN, "get");
