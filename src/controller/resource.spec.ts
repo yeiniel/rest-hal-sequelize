@@ -1,5 +1,5 @@
 
-import ava from "ava";
+import anyTest, { TestInterface } from "ava";
 import * as express from "express";
 import * as Sequelize from "sequelize";
 import * as superTest from "supertest";
@@ -8,12 +8,14 @@ import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import * as resourceController from "./resource";
 
+const test = anyTest as TestInterface<restHalTestTools.IContext>;
+
 function _setUpRouterParams(router: express.Router,
                             params: { [name: string]: express.RequestParamHandler }) {
   Object.keys(params).forEach((name) => router.param(name, params[name]));
 }
 
-ava.beforeEach((t) => {
+test.beforeEach((t) => {
   const app = express();
 
   const sequelize = new Sequelize("sqlite:///tmp/test.db");
@@ -35,7 +37,7 @@ ava.beforeEach((t) => {
   return sequelize.sync().then(() => sequelize.models.item.create({example: "value"}));
 });
 
-ava(restHalTestTools.implement, "options");
-ava(restHalTestTools.optionsAllow, "get");
-ava(restHalTestTools.implement, "get");
-ava(restHalTestTools.implementSDCN, "get");
+test(restHalTestTools.implement, "options");
+test(restHalTestTools.optionsAllow, "get");
+test(restHalTestTools.implement, "get");
+test(restHalTestTools.implementSDCN, "get");

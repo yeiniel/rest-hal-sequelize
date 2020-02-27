@@ -3,7 +3,7 @@ import test from "ava";
 
 import * as instanceToJSON from "./instance-to-json";
 
-test((t) => {
+test("transform stream", (t) => {
     const transform = new instanceToJSON.InstanceToJSON();
 
     transform.write({toJSON: () => "instance"});

@@ -3,7 +3,7 @@ import test from "ava";
 
 import * as halLinkProvider from "./hal-link-provider";
 
-test((t) => {
+test("transform stream", (t) => {
   const transform = new halLinkProvider.HALLinkProvider({
     operator: (object: any) => "/test",
     relation: "test",
