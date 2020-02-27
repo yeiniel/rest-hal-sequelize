@@ -1,6 +1,6 @@
 {
-  "name": "@zephyrec/rest-hal-sequelize",
-  "version": "1.0.3",
+  "name": "@yeiniel/rest-hal-sequelize",
+  "version": "2.0.0",
   "description": "REST HAL API built on top of Sequelize models using Express.js",
   "main": "src/index.js",
   "typings": "src/index.d.ts",
@@ -13,19 +13,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zephyrec/rest-hal-sequelize.git"
+    "url": "git+https://github.com/yeiniel/rest-hal-sequelize.git"
   },
   "keywords": [
     "rest",
     "hal",
     "sequelize"
   ],
-  "author": "Zephyr <lococeq.1985@gmail.com>",
+  "author": "Yeiniel Suarez Sosa <yeiniel@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zephyrec/rest-hal-sequelize/issues"
+    "url": "https://github.com/yeiniel/rest-hal-sequelize/issues"
   },
-  "homepage": "https://github.com/zephyrec/rest-hal-sequelize#readme",
+  "homepage": "https://github.com/yeiniel/rest-hal-sequelize#readme",
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/express": "^4.17.2",
