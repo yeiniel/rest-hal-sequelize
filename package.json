@@ -6,8 +6,7 @@
   "typings": "src/index.d.ts",
   "scripts": {
     "prepublish": "tsc",
-    "pretest": "tsc",
-    "test": "nyc ava src/*.spec.js src/**/*.spec.js",
+    "test": "ava",
     "tslint": "tslint -c tslint.json -e 'src/**/*.d.ts' 'src/**/*.ts'",
     "typedoc": "typedoc --exclude **/*.spec.ts --out docs src"
   },
@@ -38,6 +37,7 @@
     "nyc": "^10.3.2",
     "sqlite3": "^4.1.1",
     "supertest": "^3.0.0",
+    "ts-node": "^8.6.2",
     "tslint": "^5.2.0",
     "typescript": "^3.8.2"
   },
