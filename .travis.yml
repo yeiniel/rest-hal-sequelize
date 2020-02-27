@@ -10,7 +10,6 @@ cache:
 
 before_script:
   - npm run tslint
-  - npm install sqlite3
 
 after_success:
   - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
