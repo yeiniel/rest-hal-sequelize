@@ -4,5 +4,8 @@ language: node_js
 before_script:
   - npm run tslint
 
+script:
+  - nyc ava
+
 after_success:
   - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
