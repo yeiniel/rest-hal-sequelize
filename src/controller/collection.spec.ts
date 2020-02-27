@@ -1,10 +1,10 @@
 
-import * as restHalTestTools from "@zephyrec/rest-hal-test-tools";
-
 import ava from "ava";
 import * as express from "express";
 import * as Sequelize from "sequelize";
 import * as superTest from "supertest";
+
+import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import * as collectionController from "./collection";
 
@@ -28,7 +28,7 @@ ava.beforeEach((t) => {
   return sequelize.sync();
 });
 
-ava(restHalTestTools.resourceImplementOPTIONSMethod);
-ava(restHalTestTools.resourceOPTIONSMethodAllowGET);
-ava(restHalTestTools.resourceImplementGETMethod);
-ava(restHalTestTools.resourceGETMethodImplementServerDrivenContentNegotiation);
+ava(restHalTestTools.implement, "options");
+ava(restHalTestTools.optionsAllow, "get");
+ava(restHalTestTools.implement, "get");
+ava(restHalTestTools.implementSDCN, "get");

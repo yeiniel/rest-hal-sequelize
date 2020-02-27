@@ -1,9 +1,9 @@
 
-import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
-
 import ava from "ava";
 import * as express from "express";
 import * as superTest from "supertest";
+
+import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import * as rootResourceController from "./root-resource";
 
@@ -19,7 +19,7 @@ ava.beforeEach((t) => {
   t.context.models = models;
 });
 
-ava(restHalTestTools.resourceImplementOPTIONSMethod);
-ava(restHalTestTools.resourceOPTIONSMethodAllowGET);
-ava(restHalTestTools.resourceImplementGETMethod);
-ava(restHalTestTools.resourceGETMethodImplementServerDrivenContentNegotiation);
+ava(restHalTestTools.implement, "options");
+ava(restHalTestTools.optionsAllow, "get");
+ava(restHalTestTools.implement, "get");
+ava(restHalTestTools.implementSDCN, "get");
