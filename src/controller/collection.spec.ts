@@ -32,5 +32,7 @@ test.beforeEach((t) => {
 
 test(restHalTestTools.implement, "options");
 test(restHalTestTools.optionsAllow, "get");
+test(restHalTestTools.optionsAllow, "post");
 test(restHalTestTools.implement, "get");
 test(restHalTestTools.implementSDCN, "get");
+test(restHalTestTools.implement, "post");

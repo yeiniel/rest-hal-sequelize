@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "typings": "src/index.d.ts",
   "scripts": {
-    "prepublish": "tsc",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "ava",
     "tslint": "tslint -c tslint.json -e 'src/**/*.d.ts' 'src/**/*.ts'",
     "typedoc": "typedoc --exclude **/*.spec.ts --out docs src"
