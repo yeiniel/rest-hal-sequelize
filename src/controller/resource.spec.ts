@@ -39,5 +39,9 @@ test.beforeEach((t) => {
 
 test(restHalTestTools.implement, "options");
 test(restHalTestTools.optionsAllow, "get");
+test(restHalTestTools.optionsAllow, "patch");
+test(restHalTestTools.optionsAllow, "delete");
 test(restHalTestTools.implement, "get");
 test(restHalTestTools.implementSDCN, "get");
+test(restHalTestTools.implement, "patch");
+test(restHalTestTools.implement, "delete");

@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "typings": "src/index.d.ts",
   "scripts": {
-    "prepublish": "tsc",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "ava",
     "tslint": "tslint -c tslint.json -e 'src/**/*.d.ts' 'src/**/*.ts'",
     "typedoc": "typedoc --exclude **/*.spec.ts --out docs src"
@@ -34,7 +35,7 @@
     "@yeiniel/rest-hal-test-tools": "^3.0.0",
     "ava": "^3.4.0",
     "coveralls": "^2.13.1",
-    "nyc": "^10.3.2",
+    "nyc": "^15.0.0",
     "sqlite3": "^4.1.1",
     "supertest": "^3.0.0",
     "ts-node": "^8.6.2",
