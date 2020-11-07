@@ -16,7 +16,7 @@ export class ResourceController implements controller.IController {
    */
   private name: string;
 
-  constructor(private model: sequelize.Model<any, any>, private methods: routerRule.Method[]) {
+  constructor(private model: sequelize.ModelCtor<any>, private methods: routerRule.Method[]) {
 
     this.name = (this.model as any).name;
   }
@@ -61,7 +61,7 @@ export class ResourceController implements controller.IController {
   protected item(req: express.Request, res: express.Response,
                  next: express.NextFunction, id: string) {
 
-    this.model.findById(id).then((instance) => {
+    this.model.findByPk(id).then((instance) => {
         if (!instance) {
           const error = new Error("Not Found");
 
@@ -78,7 +78,7 @@ export class ResourceController implements controller.IController {
     );
   }
 
-  protected resource(req: express.Request): sequelize.Instance<any> {
+  protected resource(req: express.Request): sequelize.Model<any> {
     return (req as any)[this.name];
   }
 

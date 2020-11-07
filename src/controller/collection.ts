@@ -17,7 +17,7 @@ export class CollectionController implements controller.IController {
    */
   private name: string;
 
-  constructor(private model: sequelize.Model<any, any>, private methods: routerRule.Method[]) {
+  constructor(private model: sequelize.ModelCtor<any>, private methods: routerRule.Method[]) {
 
     this.name = (this.model as any).name;
 

@@ -18,7 +18,7 @@ function _setUpRouterParams(router: express.Router,
 test.beforeEach((t) => {
   const app = express();
 
-  const sequelize = new Sequelize("sqlite:///tmp/test.db");
+  const sequelize = new Sequelize.Sequelize("sqlite:///tmp/test.db");
 
   sequelize.define("item", {
     example: Sequelize.STRING,

@@ -4,7 +4,7 @@ import * as stream from "stream";
 import * as sequelize from "sequelize";
 
 /** Model extension providing findAllStream() impl. */
-export function FindAllStream(Model: sequelize.Model<any, any>) {
+export function FindAllStream(Model: sequelize.ModelCtor<any>) {
   (Model as any).findAllStream = (options, batchOptions: any = {limit: 1000}) => {
     // set initial offset to its default if not provided
     if (options.offset === null || options.offset === undefined) {
