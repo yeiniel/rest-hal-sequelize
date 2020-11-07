@@ -11,7 +11,7 @@ export class InstanceToJSON extends stream.Transform {
     super(options);
   }
 
-  public _transform(row: sequelize.Instance<any>, _: any, done: (error?: Error, result?: any) => void) {
+  public _transform(row: sequelize.Model<any>, _: any, done: (error?: Error, result?: any) => void) {
     this.push(row.toJSON());
     done();
   }
