@@ -33,7 +33,9 @@
     "@types/supertest": "^2.0.0",
     "@yeiniel/rest-hal-test-tools": "^3.0.0",
     "ava": "^3.4.0",
+    "commitizen": "^4.3.0",
     "coveralls": "^3.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "nyc": "^15.0.0",
     "sqlite3": "^4.1.1",
     "supertest": "^3.0.0",
@@ -46,5 +48,10 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "sequelize": "^5.22.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
