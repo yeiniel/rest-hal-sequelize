@@ -1,5 +1,5 @@
 
-import anyTest, { TestInterface } from "ava";
+import anyTest, { TestFn } from "ava";
 import * as express from "express";
 import * as superTest from "supertest";
 
@@ -7,14 +7,14 @@ import * as restHalTestTools from "@yeiniel/rest-hal-test-tools";
 
 import * as rootResourceController from "./root-resource";
 
-const test = anyTest as TestInterface<restHalTestTools.IContext>;
+const test = anyTest as TestFn<restHalTestTools.IContext>;
 
 test.beforeEach((t) => {
   const app = express();
   const models = ["a", "b", "c"];
   const controller = new rootResourceController.RootResourceController(models);
 
-  controller.setUpRoute(app.route("/"));
+  controller.setUpRoute(app.route<string>("/"));
 
   t.context.agent = superTest(app);
   t.context.resource = "/";

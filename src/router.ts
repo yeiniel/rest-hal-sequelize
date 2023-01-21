@@ -26,7 +26,7 @@ export function Router(sequelizeInstance: sequelize.Sequelize,
 
   // route requests for the root resource
   (new controller.RootResourceController(Object.keys(sequelizeInstance.models)))
-    .setUpRoute(router.route(`/`));
+    .setUpRoute(router.route<string>(`/`));
 
   // set up routing for all routes
   Object.keys(sequelizeInstance.models).forEach((name) => {
@@ -39,21 +39,21 @@ export function Router(sequelizeInstance: sequelize.Sequelize,
     _setUpRouterParams(
       router,
       (new controller.ResourceController(sequelizeInstance.models[name], rule.enabled))
-        .setUpRoute(router.route(`/${name}s/:${name}`)).params,
+        .setUpRoute(router.route<string>(`/${name}s/:${name}`)).params,
     );
 
     // route requests for model collection
     (new controller.CollectionController(sequelizeInstance.models[name], rule.enabled))
-      .setUpRoute(router.route(`/${name}s`));
+      .setUpRoute(router.route<string>(`/${name}s`));
 
     // route requests for model relations
-    Object.keys((sequelizeInstance.models[name] as any).associations).forEach((key) => {
-      const association = (sequelizeInstance.models[name] as any).associations[key];
+    Object.keys(sequelizeInstance.models[name].associations).forEach((key) => {
+      const association = sequelizeInstance.models[name].associations[key];
 
       if (association.associationType === "HasMany") {
         // route requests for associated model collection
         (new controller.CollectionController(association.target, rule.enabled))
-          .setUpRoute(router.route(`/${name}s/:${association.options.foreignKey}/${key}`));
+          .setUpRoute(router.route<string>(`/${name}s/:${association.options.foreignKey}/${key}`));
       }
     });
   });

@@ -17,7 +17,7 @@ export class CollectionController implements controller.IController {
    */
   private name: string;
 
-  constructor(private model: sequelize.ModelCtor<any>, private methods: routerRule.Method[]) {
+  constructor(private model: sequelize.ModelStatic<sequelize.Model>, private methods: routerRule.Method[]) {
 
     this.name = (this.model as any).name;
 
@@ -93,8 +93,8 @@ export class CollectionController implements controller.IController {
       }));
 
     // provide a link to each relation
-    Object.keys((this.model as any).associations).forEach((name) => {
-      const association = (this.model as any).associations[name];
+    Object.keys(this.model.associations).forEach((name) => {
+      const association = this.model.associations[name];
 
       if (association.associationType === "HasMany") {
         instanceStream = instanceStream.pipe(new transform.HALLinkProvider({

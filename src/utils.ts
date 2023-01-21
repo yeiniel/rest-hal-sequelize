@@ -8,7 +8,7 @@ import * as URL from "url";
  * @param query Query parameters to update.
  * @return {string} The new url string.
  */
-export function makeUpdatedUrl(urlStr: string, query: any = {}): string {
+export function makeUpdatedUrl(urlStr: string, query: URL.UrlWithParsedQuery['query'] = {}): string {
   const url = URL.parse(urlStr, true);
 
   // update query parameters

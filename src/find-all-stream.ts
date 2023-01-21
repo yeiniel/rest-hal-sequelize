@@ -4,7 +4,7 @@ import * as stream from "stream";
 import * as sequelize from "sequelize";
 
 /** Model extension providing findAllStream() impl. */
-export function FindAllStream(Model: sequelize.ModelCtor<any>) {
+export function FindAllStream(Model: sequelize.ModelStatic<sequelize.Model>) {
   (Model as any).findAllStream = (options, batchOptions: any = {limit: 1000}) => {
     // set initial offset to its default if not provided
     if (options.offset === null || options.offset === undefined) {
@@ -22,9 +22,7 @@ export function FindAllStream(Model: sequelize.ModelCtor<any>) {
     return new stream.Readable({
       objectMode: true,
       read() {
-        const self = this;
-
-        self.pause();
+        this.pause();
 
         Model.findAll(batchOptions)
           .then((rows) => {
@@ -47,12 +45,12 @@ export function FindAllStream(Model: sequelize.ModelCtor<any>) {
               batchOptions.limit = options.limit - batchOptions.offset;
             }
 
-            self.resume();
+            this.resume();
           })
           .catch((err) => {
             batchOptions.offset += batchOptions.limit;
-            self.resume();
-            self.emit("error", err);
+            this.resume();
+            this.emit("error", err);
           });
       },
     });

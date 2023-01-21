@@ -5,7 +5,7 @@ export interface IHALLinkProviderOptions extends stream.TransformOptions {
 
   relation: string;
 
-  operator: (object: any) => string;
+  operator: (object: Record<string, never>) => string;
 }
 
 /** Provide HAL relation link.
@@ -16,7 +16,7 @@ export interface IHALLinkProviderOptions extends stream.TransformOptions {
 export class HALLinkProvider extends stream.Transform {
 
   private relation: string;
-  private operator: (object: any) => string;
+  private operator: IHALLinkProviderOptions['operator'];
 
   /** Constructor.
    *
@@ -34,13 +34,13 @@ export class HALLinkProvider extends stream.Transform {
     this.operator = options.operator;
   }
 
-  public _transform(object: any, _: string, done: (error?: Error, result?: any) => void) {
+  public _transform(object: Parameters<IHALLinkProviderOptions['operator']>[0], _: Parameters<stream.Transform['_transform']>[1], done: Parameters<stream.Transform['_transform']>[2]) {
     // create the _links object if not present
     object._links = object._links || {};
 
     object._links[this.relation] = {
       href: this.operator.call(object, object),
-    };
+    } as never;
 
     done(null, object);
   }
